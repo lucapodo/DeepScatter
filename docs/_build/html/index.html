@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Deepscatter’s documentation! &mdash; Deepscatter 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="deepscatter" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Deepscatter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">deepscatter</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Deepscatter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Deepscatter’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-deepscatter-s-documentation">
+<h1>Welcome to Deepscatter’s documentation!<a class="headerlink" href="#welcome-to-deepscatter-s-documentation" title="Link to this heading"></a></h1>
+<p>Deepscatter is a lightweight Python library designed to enhance and amplify the variation within time series datasets. It is particularly useful for data analysts, data scientists, and researchers looking to intensify the fluctuations, shifts, or patterns in their temporal data, making them more pronounced for analysis, visualization, or modeling.</p>
+<p>Deepscatter intelligently modifies the values in your time series to enhance underlying trends and shifts, bringing subtle patterns to the forefront.</p>
+<p>Accepts input as a pandas DataFrame with values and timestamps formatted as YYYY-MM-DD HH:MM:SS.ssssss, allowing easy integration with common time series workflows.</p>
+<p>The image below shows the difference of the same time series processed with and without Deepscatter.</p>
+<a class="reference internal image-reference" href="_images/deepscatter.png"><img alt="_images/deepscatter.png" class="align-center" src="_images/deepscatter.png" style="width: 100%;" /></a>
+<section id="quicksetup">
+<h2>QuickSetup<a class="headerlink" href="#quicksetup" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Clone the repository</p></li>
+<li><p>cd deepscatter</p></li>
+<li><p>pip install . -e</p></li>
+</ol>
+</section>
+<section id="dataset-structure">
+<h2>Dataset structure<a class="headerlink" href="#dataset-structure" title="Link to this heading"></a></h2>
+<p>To process your dataset with deepscatter, you have to reshape it as this one <a class="reference external" href="https://raw.githubusercontent.com/numenta/NAB/master/data/realKnownCause/machine_temperature_system_failure.csv">https://raw.githubusercontent.com/numenta/NAB/master/data/realKnownCause/machine_temperature_system_failure.csv</a></p>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">deepscatter.model</span> <span class="kn">import</span> <span class="n">DeepScatter</span>
+<span class="kn">from</span> <span class="nn">deepscatterz</span> <span class="kn">import</span> <span class="n">load_data</span><span class="p">,</span> <span class="n">mark_anomalies_in_timeseries</span><span class="p">,</span> <span class="n">plot_shit_anomaly</span><span class="p">,</span> <span class="n">plotD</span><span class="p">,</span> <span class="n">train_test_split</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3000</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">mark_anomalies_in_timeseries</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;2013-12-10 06:25:00.000000&quot;</span><span class="p">,</span> <span class="s2">&quot;2013-12-12 05:35:00.000000&quot;</span><span class="p">)</span>
+
+<span class="n">plot_shit_anomaly</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="mi">1700</span><span class="p">)</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="n">DeepScatter</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dp</span><span class="o">.</span><span class="n">train_model</span><span class="p">()</span>
+<span class="n">trian_res</span><span class="p">,</span> <span class="n">test_res</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plotD</span><span class="p">(</span><span class="n">trian_res</span><span class="p">,</span><span class="n">test_res</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="contacts">
+<h2>Contacts<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<p>If you are itnerested in Deepscatter or you want to report some bugs, please write to <a class="reference external" href="mailto:podo&#37;&#52;&#48;di&#46;uniroma1&#46;it">podo<span>&#64;</span>di<span>&#46;</span>uniroma1<span>&#46;</span>it</a></p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">deepscatter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deepscatter.html">deepscatter.data_manager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepscatter.html#module-deepscatter.model">deepscatter.model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepscatter.html#module-deepscatter.plot">deepscatter.plot module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-right" title="deepscatter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Luca Podo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

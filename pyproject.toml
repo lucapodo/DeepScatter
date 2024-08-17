@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["deepscatter"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"*" = ["*.csv"]
+
+[project]
+name = "deepscatter"
+version = "0.0.1"
+authors = [
+  { name="Luca Podo", email="podo@di.uniroma1.it" },
+]
+description = "DeepScatter is a package that helps to enhance the unusual behavior in time series"
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = ["dependencies"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

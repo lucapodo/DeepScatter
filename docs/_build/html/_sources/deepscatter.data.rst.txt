@@ -1,0 +1,10 @@
+deepscatter.data package
+========================
+
+Module contents
+---------------
+
+.. automodule:: deepscatter.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
