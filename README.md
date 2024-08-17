@@ -22,25 +22,25 @@ To use DeepScatter, follow these steps:
 
 1. Clone the repository to your local machine:
 
-   \`\`\`bash
-   git clone https://github.com/yourusername/deepscatter.git
-   \`\`\`
+   ``` bash
+   git clone https://github.com/lucapodo/DeepScatter
+   ```
 
 2. Change into the repository directory:
 
-   \`\`\`bash
+   ``` bash
    cd deepscatter
-   \`\`\`
+   ```
 
 3. Install the package using pip:
 
-   \`\`\`bash
+   ``` bash
    pip install -e .
-   \`\`\`
+   ```
 
 4. You can now use DeepScatter in your projects. Below is an example code snippet:
 
-   \`\`\`python
+   ``` python
    import tensorflow as tf
    from deepscatter.model import DeepScatter
    from deepscatterz import load_data, mark_anomalies_in_timeseries, plot_shit_anomaly, plotD, train_test_split
@@ -57,7 +57,7 @@ To use DeepScatter, follow these steps:
    trian_res, test_res = dp.evaluate(5)
 
    plotD(trian_res, test_res, df)
-   \`\`\`
+   ```
 
 ## License
 
